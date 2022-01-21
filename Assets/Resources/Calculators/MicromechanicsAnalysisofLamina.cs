@@ -64,8 +64,7 @@ public class MicromechanicsAnalysisofLamina : MonoBehaviour
     [System.NonSerialized] private double value_ME2;
     [System.NonSerialized] private bool calc = true;
 
-
-
+ 
     private void Update()
     {
 

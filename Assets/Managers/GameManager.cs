@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour //, ISaveable
     
     private void Awake()
     {
+        Debug.Log(Application.persistentDataPath);
         Application.targetFrameRate = 60;
         THIS = this;
         dataManager = new DataManager();

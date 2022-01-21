@@ -120,6 +120,7 @@ public class DataBaseMenu : MonoBehaviour
         }
         if (save)
         {
+            
             MaterialProperties material = new MaterialProperties(materialName, E1, E2, v12, G12, a1, a2, b1, b2, thickness,
                 longitudinalTensileStrength, longitudinalCompressiveStrength, transverseTensileStrength, 
                 transverselCompressiveStrength, shearStrength
@@ -151,6 +152,7 @@ public class DataBaseMenu : MonoBehaviour
                 
             }
             GameManager.THIS.dataManager.Save();
+            GameManager.THIS.dropDownMenu.RefreshDropDownMenu();
         }
         else
         {

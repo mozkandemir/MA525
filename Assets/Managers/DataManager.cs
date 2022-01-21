@@ -90,39 +90,39 @@ public class DataManager
         string filePath;
 #if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
         // mac
-         filePath = Application.dataPath + "/" ;
+         filePath = Application.persistentDataPath;
 
         if (FileName != "")
-            filePath = filePath+FileName + ".txt";
+            filePath = filePath+ "/" +FileName + ".txt";
          
 #elif UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
         // windows
         //filePath = Path.Combine(Application.persistentDataPath, ("data/"));
-        filePath = Application.dataPath + "/" ;
+        filePath = Application.persistentDataPath;
+        //filePath = Application.dataPath + "/" ;
 
         if (FileName != "")
-            filePath = filePath+FileName + ".txt";
+            filePath = filePath+ "/" +FileName + ".txt";
         Debug.Log(filePath);
         //DirectoryInfo di = Directory.CreateDirectory(filePath);
 
 #elif UNITY_ANDROID
         // android
-        // android
-        filePath = Path.Combine(Application.persistentDataPath, ("data/" ));
-
+        //filePath = Path.Combine(Application.persistentDataPath, ("data/" ));
+        filePath = Application.persistentDataPath;
         if(FileName != "")
-            filePath = Path.Combine(filePath, (FileName + ".txt"));
+            filePath = filePath+ "/" +FileName + ".txt";
          //filePath = Application.dataPath + "/" + "data/" ;
-
+          //filePath = Path.Combine(filePath, (FileName + ".txt"));
        // if (FileName != "")
            // filePath = filePath+FileName + ".txt";
        // DirectoryInfo di = Directory.CreateDirectory(filePath);
 #elif UNITY_IOS
          // ios
-         filePath = Application.persistenDataPath + "/" + "data/" ;
+         filePath = Application.persistentDataPath;
 
         if (FileName != "")
-            filePath = filePath+FileName + ".txt";
+            filePath = filePath+ "/" +FileName + ".txt";
 #else
         filePath = Application.dataPath +FileName + ".txt";
 #endif

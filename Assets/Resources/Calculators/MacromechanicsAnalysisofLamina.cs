@@ -102,6 +102,7 @@ public class MacromechanicsAnalysisofLamina : MonoBehaviour
     [System.NonSerialized] private double[][] lclT;
     [System.NonSerialized] private double[][] ttlHT;
     [System.NonSerialized] private double[][] tH;
+    [System.NonSerialized] private double screenWidth;
     [System.NonSerialized] private float cos;
     [System.NonSerialized] private float sin;
     [System.NonSerialized] List<Vector2> q11BarPositionList;
@@ -110,10 +111,18 @@ public class MacromechanicsAnalysisofLamina : MonoBehaviour
     [System.NonSerialized] List<Vector2> q22BarPositionList;
     [System.NonSerialized] List<Vector2> q23q32BarPositionList;
     [System.NonSerialized] List<Vector2> q33BarPositionList;
+    private void Awake()
+    {
+        screenWidth = Screen.width;
+    }
+    private void Start()
+    {
+        GameManager.THIS.dropDownMenu.GetValues();
+    }
 
     private void Update()
     {
-
+        Debug.Log(Screen.width);
         if (allItemsOfLamina.offsetMin.y < 0.0f)
         {
 
@@ -156,9 +165,10 @@ public class MacromechanicsAnalysisofLamina : MonoBehaviour
     private void PutCircle(double xValue, double yValue, double yMin, double yMax, RectTransform rt)
     {
         double yPos = Calc.map((float)yValue, (float)yMin, (float)yMax, 0f, 350f);
-        double xSize = 2.6f;
+        double xSize = screenWidth / 250.0;
         double xPos = xSize * xValue;
-        CreateCircle(new Vector2((float)xPos+142f, (float)yPos), rt);
+        xPos = Calc.map((float)xValue, 0,180, 140f, (float)screenWidth - 200f);
+        CreateCircle(new Vector2((float)xPos, (float)yPos), rt);
     }
     private double FindMaximum(List<Vector2> v2)
     {
